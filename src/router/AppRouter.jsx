@@ -1,11 +1,11 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '../auth/pages';
-import { CalendarPage } from '../calendar/calendarPage';
+import { CalendarPage } from '../calendar/CalendarPage';
 
 export const AppRouter = () => {
     
-    const authStatus = false;
+    const authStatus = true;
   
     return (
     <Routes>
