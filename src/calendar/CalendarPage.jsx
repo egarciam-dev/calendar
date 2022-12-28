@@ -6,6 +6,7 @@ import { addHours } from 'date-fns/esm'
 import { Navbar } from './components/Navbar'
 import { localizer, getMessagesES } from '../helpers'
 import { CalendarEvent } from './components/CalendarEvent'
+import { CalendarModal } from './components/CalendarModal'
 
 const events = [{
   title: 'Cumpleanos de Elianny',
@@ -75,6 +76,8 @@ export const CalendarPage = () => {
         onView={ onViewChanged }
       />
 
+
+      <CalendarModal />
 
     </>
   )
