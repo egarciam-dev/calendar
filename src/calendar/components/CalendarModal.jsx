@@ -1,4 +1,4 @@
-import { addHours, differenceInSeconds } from 'date-fns';
+import { addHours, differenceInSeconds, isDate } from 'date-fns';
 import React, { useMemo, useState } from 'react'
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -6,6 +6,7 @@ import Modal from 'react-modal'
 import es from 'date-fns/locale/es';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css'
+import { useUiStore } from '../../hooks';
 
 // Register para el idioma ES
 registerLocale('es', es)
@@ -27,8 +28,11 @@ Modal.setAppElement('#root');
 
 export const CalendarModal = () => {
 
+    // Store con Redux para saber si el modal esta abierto
+    const { isDateModalOpen } = useUiStore();
+
     // Store local para saber si modal esta abierto
-    const [isOpen, setIsOpen] = useState(true);
+    // const [isOpen, setIsOpen] = useState(true);
 
     // To check if submitted
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -72,9 +76,9 @@ export const CalendarModal = () => {
     }
 
     // Evento para cambiar el estado del modal a false
-    const onCloseModal = () => {
-        setIsOpen(false);
-    }
+    // const onCloseModal = () => {
+    //     setIsOpen(false);
+    // }
 
     // Funcionar para manejar el posteo
     const onSubmit = ( event ) => {
@@ -95,8 +99,7 @@ export const CalendarModal = () => {
 
         // Componente del modal
         <Modal
-            isOpen={ isOpen }
-            onRequestClose={ onCloseModal }
+            isOpen={ isDateModalOpen }
             style={customStyles}
             className="modal"
             overlayClassName="modal-fondo"
