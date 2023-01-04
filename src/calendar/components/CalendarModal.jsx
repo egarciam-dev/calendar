@@ -29,7 +29,7 @@ Modal.setAppElement('#root');
 export const CalendarModal = () => {
 
     // Store con Redux para saber si el modal esta abierto
-    const { isDateModalOpen } = useUiStore();
+    const { isDateModalOpen, closeDateModal } = useUiStore();
 
     // Store local para saber si modal esta abierto
     // const [isOpen, setIsOpen] = useState(true);
@@ -76,9 +76,9 @@ export const CalendarModal = () => {
     }
 
     // Evento para cambiar el estado del modal a false
-    // const onCloseModal = () => {
-    //     setIsOpen(false);
-    // }
+    const onCloseModal = () => {
+        closeDateModal();
+    }
 
     // Funcionar para manejar el posteo
     const onSubmit = ( event ) => {
@@ -104,6 +104,7 @@ export const CalendarModal = () => {
             className="modal"
             overlayClassName="modal-fondo"
             closeTimeoutMS={ 200 }
+            onRequestClose={ onCloseModal }
         >
             {/* Cuerpo del modal */}
             <h1> Nuevo evento </h1>

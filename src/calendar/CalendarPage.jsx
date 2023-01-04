@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar'
 import { localizer, getMessagesES } from '../helpers'
 import { CalendarEvent } from './components/CalendarEvent'
 import { CalendarModal } from './components/CalendarModal'
+import { useUiStore } from '../hooks'
 
 const events = [{
   title: 'Cumpleanos de Elianny',
@@ -22,6 +23,10 @@ const events = [{
 
 export const CalendarPage = () => {
 
+  // Custom Hook
+  const { openDateModal } = useUiStore();
+
+  // Use state
   const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'week' );
 
   // Evento para estilizar una cita en el calendario
@@ -41,7 +46,7 @@ export const CalendarPage = () => {
 
   // start-  Eventos de acciones para el calendario
   const onDoubleClick = ( event ) => {
-    console.log( { doubleClick: event })
+    openDateModal();
   }
 
   const onSelect = ( event ) => {
