@@ -12,7 +12,7 @@ export const CalendarPage = () => {
 
   // Custom Hook
   const { openDateModal } = useUiStore();
-  const { events } = useCalendarStore();
+  const { events, setActiveEvent } = useCalendarStore();
 
   // Use state
   const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'week' );
@@ -38,7 +38,8 @@ export const CalendarPage = () => {
   }
 
   const onSelect = ( event ) => {
-    console.log( { click: event })
+    // console.log( { click: event })
+    setActiveEvent( event );
   }
 
   const onViewChanged = ( event ) => {
